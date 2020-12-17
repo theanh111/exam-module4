@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Xóa thành phố</title>
+</head>
+<body>
+<center>
+    <h1>Xóa thành phố</h1>
+    <h4 style="color: red">Bạn có chắc muốn xóa thành phố?</h4>
+    <a href="/city/list">Xem danh sách thành phố</a>
+    <form action="/city/delete" method="post">
+        <table border="1" cellpadding="10" th:object="${city}">
+            <tr>
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{country.id}">
+                <td>Tên</td>
+                <td>
+                    <input type="text" readonly="readonly" th:field="*{name}">
+                </td>
+            </tr>
+            <tr>
+                <td>Quốc gia</td>
+                <td>
+                    <input type="text" readonly="readonly" th:field="*{country.name}">
+                </td>
+            </tr>
+            <tr>
+                <td>Diện tích</td>
+                <td>
+                    <input type="number" readonly="readonly" th:field="*{totalArea}">
+                </td>
+            </tr>
+            <tr>
+                <td>Dân số</td>
+                <td>
+                    <input type="number" readonly="readonly" th:field="*{population}">
+                </td>
+            </tr>
+            <tr>
+                <td>GDP</td>
+                <td>
+                    <input type="number" readonly="readonly" th:field="*{gdp}">
+                </td>
+            </tr>
+            <tr>
+                <td>Giới thiệu</td>
+                <td>
+                    <textarea readonly="readonly" th:field="*{description}"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Xóa thành phố">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <a href="/city/list">Thoát</a>
+</center>
+</body>
+</html>
