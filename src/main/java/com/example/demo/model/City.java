@@ -1,10 +1,8 @@
 package com.example.demo.model;
 
-
 import javax.persistence.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -13,23 +11,23 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty (message = "Xin mời nhập tên thành phố!")
+    @NotNull (message = "Xin mời nhập tên thành phố!")
     private String name;
 
     @ManyToOne
-    @NotEmpty (message = "Xin mời nhập tên quốc gia!")
+//    @NotNull (message = "Xin mời nhập tên quốc gia!")
     private Country country;
 
-    @NotEmpty (message = "Xin mời nhập diện tích!")
+    @NotNull (message = "Xin mời nhập diện tích!")
     private Integer totalArea;
 
-    @NotEmpty (message = "Xin mời nhập dân số!")
+    @NotNull (message = "Xin mời nhập dân số!")
     private Integer population;
 
-    @NotEmpty (message = "Xin mời nhập diện tích!")
+    @NotNull (message = "Xin mời nhập GDP!")
     private Integer gdp;
 
-    @NotEmpty (message = "Xin mời nhập diện tích!")
+    @NotNull (message = "Xin mời nhập mô tả!")
     private String description;
 
     public City() {
