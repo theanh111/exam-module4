@@ -1,7 +1,10 @@
 package com.example.demo.model;
 
+import org.springframework.validation.annotation.Validated;
+
 import javax.persistence.*;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -11,11 +14,11 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull (message = "Xin mời nhập tên thành phố!")
+    @NotEmpty (message = "Xin mời nhập tên thành phố!")
     private String name;
 
     @ManyToOne
-//    @NotNull (message = "Xin mời nhập tên quốc gia!")
+    @NotNull (message = "Xin mời nhập tên quốc gia!")
     private Country country;
 
     @NotNull (message = "Xin mời nhập diện tích!")
@@ -27,7 +30,7 @@ public class City {
     @NotNull (message = "Xin mời nhập GDP!")
     private Integer gdp;
 
-    @NotNull (message = "Xin mời nhập mô tả!")
+    @NotEmpty (message = "Xin mời nhập mô tả!")
     private String description;
 
     public City() {

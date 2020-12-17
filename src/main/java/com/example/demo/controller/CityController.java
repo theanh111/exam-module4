@@ -7,6 +7,7 @@ import com.example.demo.service.countryService.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -48,13 +49,17 @@ public class CityController {
     }
 
     @PostMapping("/create")
-    public String createCity(@ModelAttribute("city") City city, RedirectAttributes redirect, BindingResult bindingResult) {
+    public ModelAndView createCity(@Validated @ModelAttribute("city") City city, BindingResult bindingResult, RedirectAttributes redirect) {
+        Iterable<Country> countries = countryService.findAll();
         if (bindingResult.hasFieldErrors()) {
-            return "redirect:/city/create";
+            ModelAndView modelAndView = new ModelAndView("create");
+            modelAndView.addObject("countries", countries);
+            return modelAndView;
         }
         cityService.save(city);
-        redirect.addFlashAttribute("message", "Thêm thành phố mới thành công!");
-        return "redirect:/city/list";
+        ModelAndView modelAndView = new ModelAndView("listcity");
+        modelAndView.addObject("message", "Thêm thành phố mới thành công!");
+        return modelAndView;
     }
 
     @GetMapping("/edit/{id}")

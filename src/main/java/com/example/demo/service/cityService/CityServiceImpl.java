@@ -1,6 +1,6 @@
 package com.example.demo.service.cityService;
 
-import com.example.demo.Repository.CityRepository;
+import com.example.demo.repository.CityRepository;
 import com.example.demo.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
